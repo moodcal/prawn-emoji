@@ -27,8 +27,8 @@ module Prawn
         emoji_image = Emoji::Image.new(emoji_unicode)
 
         emoji_x, emoji_y = text_options[:at]
-        emoji_x += @document.width_of(left_text, text_options)*1.1
-        emoji_y += @document.font_size*0.85
+        emoji_x += @document.width_of(left_text, text_options)+@document.font_size*0.1
+        emoji_y += @document.font_size*0.8
 
         draw_emoji_image emoji_image, at: [emoji_x, emoji_y], width: @document.font_size
 
@@ -37,7 +37,7 @@ module Prawn
       end
 
       def draw_emoji_image(emoji_image, at:, width:)
-        @document.image emoji_image.path, at: at, width: width*0.95
+        @document.image emoji_image.path, at: at, width: width*0.85
       end
     end
   end
